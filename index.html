@@ -78,13 +78,16 @@
         }
 
         // audio playing
-        document.body.addEventListener("click", function () {
+        window.addEventListener("load", function () {
             let audio = document.getElementById("music");
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-                audio.currentTime = 0; 
+            let playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log("Audio started playing.");
+                }).catch(error => {
+                    console.log("Autoplay blocked. User interaction required.");
+                });
             }
         });
     </script>
