@@ -8,14 +8,14 @@
 </head>
 <body>
 <!-- audio -->
-    <audio id="music" src="assets/song.mp3"></audio>
+    <audio id="music" src="assets/song.mp3" autoplay></audio>
 
     <div class="container">
         <div id="step1" class="step active">
             <img src="assets/1.gif" alt="Image 1">
             <h2>Will you be my Valentine?</h2>
-            <button class="primary" onclick="showFinal()">Yes</button>
-            <button class="secondary" onclick="nextStep(2)">No</button>
+            <button class="primary" id="playAudio1" onclick="showFinal()">Yes</button>
+            <button class="secondary" id="playAudio" onclick="nextStep(2)">No</button>
         </div>
         <div id="step2" class="step">
             <img src="assets/2.gif" alt="Image 2">
@@ -78,15 +78,31 @@
         }
 
         // audio playing
-        window.addEventListener("load", function () {
+        document.getElementById("playAudio").addEventListener("click", function () {
             let audio = document.getElementById("music");
+
+            // Try playing the audio
             let playPromise = audio.play();
 
             if (playPromise !== undefined) {
                 playPromise.then(() => {
-                    console.log("Audio started playing.");
+                    console.log("Audio is playing.");
                 }).catch(error => {
-                    console.log("Autoplay blocked. User interaction required.");
+                    console.log("Error playing audio:", error);
+                });
+            }
+        });
+        document.getElementById("playAudio1").addEventListener("click", function () {
+            let audio = document.getElementById("music");
+
+            // Try playing the audio
+            let playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log("Audio is playing.");
+                }).catch(error => {
+                    console.log("Error playing audio:", error);
                 });
             }
         });
