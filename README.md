@@ -1,1 +1,1 @@
-I don't have pookie guys, Share with your friends
+I don't have pookie guys, Share with your Pokkie's
